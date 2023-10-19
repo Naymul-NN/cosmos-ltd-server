@@ -12,14 +12,7 @@ app.use(express.json());
 
 const port = process.env.PORT || 5000
 
-//ScjBMc7HwbegInFi
-//my_mongodb
-
-
 const uri = `mongodb+srv://${process.env.ESER_LAM}:${process.env.PRIVET_PASSWORD}@cluster0.4kfubsh.mongodb.net/?retryWrites=true&w=majority`;
-
-
-
 
 const client = new MongoClient(uri, {
   serverApi: {
@@ -28,10 +21,6 @@ const client = new MongoClient(uri, {
     deprecationErrors: true,
   }
 });
-// uri.system.users.updateOne(
-//   { "user": "my_mongodb" }, // Filter to find the document to update
-//   { $set: { "user": "myMongodb" } } // Update the "user" field
-// )
 
 
 async function run() {
@@ -52,7 +41,6 @@ async function run() {
       res.send(result);
   })
 
-  
     //get
     app.get('/users',async(req,res)=>{
       const result = await userCollection.find().toArray();
@@ -82,16 +70,6 @@ async function run() {
   })
 
   //
-
-
-    //post
-    // app.post('/users', async(req,res)=>{
-    //     const user = req.body;
-    //     console.log(user);
-    //     const result = await userCollection.insertOne(user);
-    //     res.send(result);
-
-    // })
     
     app.post('/products', async(req,res)=>{
         const product = req.body;
@@ -142,9 +120,6 @@ async function run() {
       res.send(result);
   })
    
-    
-
-
     // delete
 
     app.delete("/users/:id", async(req,res)=>{
@@ -164,7 +139,6 @@ async function run() {
   }
 }
 run().catch(console.dir);
-
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
