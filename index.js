@@ -85,13 +85,14 @@ async function run() {
 
 
     //post
-    app.post('/users', async(req,res)=>{
-        const user = req.body;
-        console.log(user);
-        const result = await userCollection.insertOne(user);
-        res.send(result);
+    // app.post('/users', async(req,res)=>{
+    //     const user = req.body;
+    //     console.log(user);
+    //     const result = await userCollection.insertOne(user);
+    //     res.send(result);
 
-    })
+    // })
+    
     app.post('/products', async(req,res)=>{
         const product = req.body;
         console.log(product);
