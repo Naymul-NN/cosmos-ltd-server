@@ -60,6 +60,11 @@ async function run() {
     const products = await productCollection.find({brand:coty}).toArray();
     res.send(products);
   });
+  app.get('/cart/:userName', async(req, res) => {
+    const userName = req.params.userName;
+    const products = await cartCollection.find({user:userName}).toArray();
+    res.send(products);
+  });
 
   //get the cart
   app.get('/carts',async(req,res)=>{
@@ -74,7 +79,6 @@ async function run() {
         console.log(product);
         const result = await productCollection.insertOne(product);
         res.send(result);
-
     })
 
     app.post('/carts', async(req,res)=>{
